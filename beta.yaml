@@ -242,7 +242,7 @@ blueprint:
                 - label: None
                   value: ""
                 - label: Clip
-                  value: "{{base_url}}/api/events/{{id}}/{{camera}}/clip.mp4"
+                  value: "{{base_url}}/api/events/{{id}}/clip.mp4"
         color:
           name: Notification Color - Android/TV only (Optional)
           description: Set the color of the notification on your Android mobile device or TV.
@@ -579,12 +579,12 @@ blueprint:
             The URL to open when tapping on the notification. Some presets are provided, you can also set your own by typing in the box. 
 
             These options define the text and URLs associated with the three action buttons at the bottom of the notification.
-          default: "{{base_url}}/api/events/{{id}}/{{camera}}/clip.mp4"
+          default: "{{base_url}}/api/events/{{id}}/clip.mp4"
           selector:
             select:
               options:
                 - label: View Clip
-                  value: "{{base_url}}/api/events/{{id}}/{{camera}}/clip.mp4"
+                  value: "{{base_url}}/api/events/{{id}}/clip.mp4"
                 - label: View Snapshot
                   value: "{{base_url}}/api/events/{{id}}/snapshot.jpg"
                 - label: View Stream
@@ -594,11 +594,11 @@ blueprint:
                 - label: Open Home Assistant (app)
                   value: /lovelace
                 - label: Open Frigate
-                  value: /ccab4aaf_frigate/dashboard
+                  value: "{{base_url}}"
                 - label: Open Frigate (Full Access)
-                  value: /ccab4aaf_frigate-fa/dashboard
+                  value: "{{base_url}}"
                 - label: Open Frigate (proxy)
-                  value: /ccab4aaf_frigate-proxy/dashboard
+                  value: "{{base_url}}"
                 - label: Open Reolink App (Android)
                   value: app://com.mcu.reolink
                 - label: Custom Action (Manual Trigger)
@@ -611,12 +611,12 @@ blueprint:
         url_1:
           name: Action Button 1 URL
           description: Customise what happens when you press the first Action Button. Select from one of the preconfigured options or enter your own custom URL.
-          default: "{{base_url}}/api/events/{{id}}/{{camera}}/clip.mp4"
+          default: "{{base_url}}/api/events/{{id}}/clip.mp4"
           selector:
             select:
               options:
                 - label: View Clip
-                  value: "{{base_url}}/api/events/{{id}}/{{camera}}/clip.mp4"
+                  value: "{{base_url}}/api/events/{{id}}/clip.mp4"
                 - label: View Snapshot
                   value: "{{base_url}}/api/events/{{id}}/snapshot.jpg"
                 - label: View Stream
@@ -626,11 +626,11 @@ blueprint:
                 - label: Open Home Assistant (app)
                   value: /lovelace
                 - label: Open Frigate
-                  value: /ccab4aaf_frigate/dashboard
+                  value: "{{base_url}}"
                 - label: Open Frigate (Full Access)
-                  value: /ccab4aaf_frigate-fa/dashboard
+                  value: "{{base_url}}"
                 - label: Open Frigate (proxy)
-                  value: /ccab4aaf_frigate-proxy/dashboard
+                  value: "{{base_url}}"
                 - label: Open Reolink App (Android)
                   value: app://com.mcu.reolink
                 - label: Custom Action (Manual Trigger)
@@ -652,7 +652,7 @@ blueprint:
             select:
               options:
                 - label: View Clip
-                  value: "{{base_url}}/api/events/{{id}}/{{camera}}/clip.mp4"
+                  value: "{{base_url}}/api/events/{{id}}/clip.mp4"
                 - label: View Snapshot
                   value: "{{base_url}}/api/events/{{id}}/snapshot.jpg"
                 - label: View Stream
@@ -662,11 +662,11 @@ blueprint:
                 - label: Open Home Assistant (app)
                   value: /lovelace
                 - label: Open Frigate
-                  value: /ccab4aaf_frigate/dashboard
+                  value: "{{base_url}}"
                 - label: Open Frigate (Full Access)
-                  value: /ccab4aaf_frigate-fa/dashboard
+                  value: "{{base_url}}"
                 - label: Open Frigate (proxy)
-                  value: /ccab4aaf_frigate-proxy/dashboard
+                  value: "{{base_url}}"
                 - label: Open Reolink App (Android)
                   value: app://com.mcu.reolink
                 - label: Custom Action (Manual Trigger)
@@ -690,7 +690,7 @@ blueprint:
                 - label: Silence New Notifications
                   value: silence-{{ this.entity_id }}
                 - label: View Clip
-                  value: "{{base_url}}/api/events/{{id}}/{{camera}}/clip.mp4"
+                  value: "{{base_url}}/api/events/{{id}}/clip.mp4"
                 - label: View Snapshot
                   value: "{{base_url}}/api/events/{{id}}/snapshot.jpg"
                 - label: View Stream
@@ -700,11 +700,11 @@ blueprint:
                 - label: Open Home Assistant (app)
                   value: /lovelace
                 - label: Open Frigate
-                  value: /ccab4aaf_frigate/dashboard
+                  value: "{{base_url}}"
                 - label: Open Frigate (Full Access)
-                  value: /ccab4aaf_frigate-fa/dashboard
+                  value: "{{base_url}}"
                 - label: Open Frigate (proxy)
-                  value: /ccab4aaf_frigate-proxy/dashboard
+                  value: "{{base_url}}"
                 - label: Open Reolink App (Android)
                   value: app://com.mcu.reolink
                 - label: Custom Action (Manual Trigger)
@@ -1364,7 +1364,7 @@ action:
                                   message: {{message}}
                                   iOS sound: {{'Critical' if critical else 'disabled by alert once' if alert_once else 'enabled'}}, 
                                   Android Sound: {{'disabled by alert once' if alert_once else 'enabled'}}, 
-                                  iOS url: {{'REDACTED' if base_url and redacted else base_url}}/api/events/{{id}}/{{camera + '/clip.mp4' if video|length>0 and wait.trigger.payload_json['type'] == 'end' else attachment }}
+                                  iOS url: {{'REDACTED' if base_url and redacted else base_url}}/api/events/{{id}}/{{'/clip.mp4' if video|length>0 and wait.trigger.payload_json['type'] == 'end' else attachment }}
                                   video: "{{video if not redacted or not base_url else video |replace(base_url, 'REDACTED')}}"
 
                                   critical: {{critical}},
@@ -1440,7 +1440,7 @@ action:
                                     subtitle: "{{subtitle}}"
                                     url: "{{tap_action}}"
                                     attachment:
-                                      url: "{{base_url}}/api/events/{{id}}/{{camera + '/clip.mp4' if video|length>0 and wait.trigger.payload_json['type'] == 'end' else attachment }}"
+                                      url: "{{base_url}}/api/events/{{id}}/{{'/clip.mp4' if video|length>0 and wait.trigger.payload_json['type'] == 'end' else attachment }}"
                                       content-type: "{{ 'mpeg4' if video|length>0 and wait.trigger.payload_json['type'] == 'end' else 'jpeg' }}"
                                     push:
                                       sound:
@@ -1497,7 +1497,7 @@ action:
                                       subtitle: "{{subtitle}}"
                                       url: "{{tap_action}}"
                                       attachment:
-                                        url: "{{base_url}}/api/events/{{id}}/{{camera + '/clip.mp4' if video|length>0 and wait.trigger.payload_json['type'] == 'end' else attachment }}"
+                                        url: "{{base_url}}/api/events/{{id}}/{{'/clip.mp4' if video|length>0 and wait.trigger.payload_json['type'] == 'end' else attachment }}"
                                         content-type: "{{ 'mpeg4' if video|length>0 and wait.trigger.payload_json['type'] == 'end' else 'jpeg' }}"
                                       push:
                                         sound:
@@ -1551,7 +1551,7 @@ action:
                                   subtitle: "{{subtitle}}"
                                   url: "{{tap_action}}"
                                   attachment:
-                                    url: "{{base_url}}/api/events/{{id}}/{{camera + '/clip.mp4' if video|length>0 and wait.trigger.payload_json['type'] == 'end' else attachment }}"
+                                    url: "{{base_url}}/api/events/{{id}}/{{'/clip.mp4' if video|length>0 and wait.trigger.payload_json['type'] == 'end' else attachment }}"
                                     content-type: "{{ 'mpeg4' if video|length>0 and wait.trigger.payload_json['type'] == 'end' else 'jpeg' }}"
                                   push:
                                     sound:
