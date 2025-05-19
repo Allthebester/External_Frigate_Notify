@@ -206,7 +206,7 @@ blueprint:
             - label: None
               value: ""
             - label: Clip
-              value: "{{base_url}}/api/events/{{id}}/{{camera}}/clip.mp4"
+              value: "{{base_url}}/api/events/{{id}}/clip.mp4"
     color:
       name: Notification Color - Android/TV only (Optional)
       description: Set the color of the notification on your Android mobile device or TV.
@@ -500,12 +500,12 @@ blueprint:
         The url to open when tapping on the notification. Some presets are provided, you can also set you own by typing in the box. 
 
         These options define the text and urls associated with the three action buttons at the bottom of the notification.
-      default: "{{base_url}}/api/events/{{id}}/{{camera}}/clip.mp4"
+      default: "{{base_url}}/api/events/{{id}}/clip.mp4"
       selector:
         select:
           options:
             - label: View Clip
-              value: "{{base_url}}/api/events/{{id}}/{{camera}}/clip.mp4"
+              value: "{{base_url}}/api/events/{{id}}/clip.mp4"
             - label: View Snapshot
               value: "{{base_url}}/api/events/{{id}}/snapshot.jpg"
             - label: View Stream
@@ -532,12 +532,12 @@ blueprint:
     url_1:
       name: Action Button 1 URL
       description: Customise what happens when you press the first Action Button. Select from one of the preconfigured options or enter your own custom URL.
-      default: "{{base_url}}/api/events/{{id}}/{{camera}}/clip.mp4"
+      default: "{{base_url}}/api/events/{{id}}/clip.mp4"
       selector:
         select:
           options:
             - label: View Clip
-              value: "{{base_url}}/api/events/{{id}}/{{camera}}/clip.mp4"
+              value: "{{base_url}}/api/events/{{id}}/clip.mp4"
             - label: View Snapshot
               value: "{{base_url}}/api/events/{{id}}/snapshot.jpg"
             - label: View Stream
@@ -573,7 +573,7 @@ blueprint:
         select:
           options:
             - label: View Clip
-              value: "{{base_url}}/api/events/{{id}}/{{camera}}/clip.mp4"
+              value: "{{base_url}}/api/events/{{id}}/clip.mp4"
             - label: View Snapshot
               value: "{{base_url}}/api/events/{{id}}/snapshot.jpg"
             - label: View Stream
@@ -611,7 +611,7 @@ blueprint:
             - label: Silence New Notifications
               value: silence-{{ camera }}
             - label: View Clip
-              value: "{{base_url}}/api/events/{{id}}/{{camera}}/clip.mp4"
+              value: "{{base_url}}/api/events/{{id}}/clip.mp4"
             - label: View Snapshot
               value: "{{base_url}}/api/events/{{id}}/snapshot.jpg"
             - label: View Stream
@@ -1157,7 +1157,7 @@ action:
                                   sublabel: {{sub_label}}, 
                                   iOS sound: {{update if not critical else 'yes due critical notifications'}}, 
                                   Android Sound: {{'disabled by alert once' if alert_once else 'enabled'}}, 
-                                  iOS url: /api/events/{{id}}/{{camera + '/clip.mp4' if video|length>0 and wait.trigger.payload_json['type'] == 'end' else attachment }}
+                                  iOS url: /api/events/{{id}}/{{'/clip.mp4' if video|length>0 and wait.trigger.payload_json['type'] == 'end' else attachment }}
                                   video: "{{video}}"
                                   critical: {{critical}}, 
                                 Triggers: 
@@ -1213,7 +1213,7 @@ action:
                                     subtitle: "{{subtitle}}"
                                     url: "{{tap_action}}"
                                     attachment:
-                                      url: "{{base_url}}/api/events/{{id}}/{{camera + '/clip.mp4' if video|length>0 and wait.trigger.payload_json['type'] == 'end' else attachment }}"
+                                      url: "{{base_url}}/api/events/{{id}}/{{'/clip.mp4' if video|length>0 and wait.trigger.payload_json['type'] == 'end' else attachment }}"
                                     push:
                                       sound: "{{ iif(update, 'none', sound) }}"
                                       interruption-level: "{{ iif(critical, 'critical', 'active') }}"
@@ -1267,7 +1267,7 @@ action:
                                       subtitle: "{{subtitle}}"
                                       url: "{{tap_action}}"
                                       attachment:
-                                        url: "{{base_url}}/api/events/{{id}}/{{camera + '/clip.mp4' if video|length>0 and wait.trigger.payload_json['type'] == 'end' else attachment }}"
+                                        url: "{{base_url}}/api/events/{{id}}/{{'/clip.mp4' if video|length>0 and wait.trigger.payload_json['type'] == 'end' else attachment }}"
                                       push:
                                         sound: "{{ iif(update, 'none', sound) }}"
                                         interruption-level: "{{ iif(critical, 'critical', 'active') }}"
@@ -1318,7 +1318,7 @@ action:
                                   subtitle: "{{subtitle}}"
                                   url: "{{tap_action}}"
                                   attachment:
-                                    url: "{{base_url}}/api/events/{{id}}/{{camera + '/clip.mp4' if video|length>0 and wait.trigger.payload_json['type'] == 'end' else attachment }}"
+                                    url: "{{base_url}}/api/events/{{id}}/{{'/clip.mp4' if video|length>0 and wait.trigger.payload_json['type'] == 'end' else attachment }}"
                                   push:
                                     sound: "{{ iif(update, 'none', sound) }}"
                                     interruption-level: "{{ iif(critical, 'critical', 'active') }}"
