@@ -515,11 +515,11 @@ blueprint:
             - label: Open Home Assistant (app)
               value: /lovelace
             - label: Open Frigate
-              value: /ccab4aaf_frigate/dashboard
+              value: "{{base_url}}"
             - label: Open Frigate (Full Access)
-              value: /ccab4aaf_frigate-fa/dashboard
+              value: "{{base_url}}"
             - label: Open Frigate (proxy)
-              value: /ccab4aaf_frigate-proxy/dashboard
+              value: "{{base_url}}"
             - label: Open Reolink App (Android)
               value: app://com.mcu.reolink
             - label: Custom Action (Manual Trigger)
@@ -547,11 +547,11 @@ blueprint:
             - label: Open Home Assistant (app)
               value: /lovelace
             - label: Open Frigate
-              value: /ccab4aaf_frigate/dashboard
+              value: "{{base_url}}"
             - label: Open Frigate (Full Access)
-              value: /ccab4aaf_frigate-fa/dashboard
+              value: "{{base_url}}"
             - label: Open Frigate (proxy)
-              value: /ccab4aaf_frigate-proxy/dashboard
+              value: "{{base_url}}"
             - label: Open Reolink App (Android)
               value: app://com.mcu.reolink
             - label: Custom Action (Manual Trigger)
@@ -583,11 +583,11 @@ blueprint:
             - label: Open Home Assistant (app)
               value: /lovelace
             - label: Open Frigate
-              value: /ccab4aaf_frigate/dashboard
+              value: "{{base_url}}"
             - label: Open Frigate (Full Access)
-              value: /ccab4aaf_frigate-fa/dashboard
+              value: "{{base_url}}"
             - label: Open Frigate (proxy)
-              value: /ccab4aaf_frigate-proxy/dashboard
+              value: "{{base_url}}"
             - label: Open Reolink App (Android)
               value: app://com.mcu.reolink
             - label: Custom Action (Manual Trigger)
@@ -621,11 +621,11 @@ blueprint:
             - label: Open Home Assistant (app)
               value: /lovelace
             - label: Open Frigate
-              value: /ccab4aaf_frigate/dashboard
+              value: "{{base_url}}"
             - label: Open Frigate (Full Access)
-              value: /ccab4aaf_frigate-fa/dashboard
+              value: "{{base_url}}"
             - label: Open Frigate (proxy)
-              value: /ccab4aaf_frigate-proxy/dashboard
+              value: "{{base_url}}"
             - label: Open Reolink App (Android)
               value: app://com.mcu.reolink
             - label: Custom Action (Manual Trigger)
